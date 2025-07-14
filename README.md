@@ -2,7 +2,21 @@
 
 I developed a minimalistic iOS document scanning app focused on delivering a clean and intuitive user experience. The app allows users to scan physical documents using their device camera and perform essential image adjustments before exporting the final result as a PDF.
 
+<<<<<<< HEAD
 🔧 **Key Features Implemented:**
+=======
+## App Preview
+
+| Home Screen | Scanned Document | Share Sheet |
+|:-----------:|:----------------:|:-----------:|
+| ![Home Screen](assets/app-ss1.png) | ![Scanned Document](assets/app-ss2.png) | ![Share Sheet](assets/app-ss3.png) |
+
+### Demo Video
+
+https://github.com/Mansi4481/Ease-scan/assets/app-vd1.mov
+
+## Getting Started
+>>>>>>> 29347a7 (Updated README with correct preview image paths)
 
 **Document Scanning**__: 
 Integrated camera functionality to capture high-resolution images of documents.
