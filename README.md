@@ -21,8 +21,5 @@ Ensured smooth transitions, intuitive gestures, and a clutter-free interface.
 Prioritized usability and visual clarity throughout the app.
 
 
-## App Preview
-
 ### Home Screen
-![Home Screen](/assets/app-ss1.png)
-
+![Home Screen](assets/app-ss-1.png)
