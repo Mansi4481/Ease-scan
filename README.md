@@ -6,12 +6,14 @@ I developed a minimalistic iOS document scanning app focused on delivering a cle
 
 **Document Scanning**__: 
 Integrated camera functionality to capture high-resolution images of documents.
+
 **Image Editing Tools:**__
 Cropping: Users can manually adjust the document boundaries.
 Rotation: Simple controls to rotate images for proper alignment.
 Enhancement: Applied filters to improve clarity and contrast for better readability.
 PDF Export: Users can compile scanned pages into a single PDF file for easy sharing or storage.
-Design & UX:
+
+**Design & UX:**
 Focused on a minimalist, high-end design that aligns with modern iOS aesthetics.
 Ensured smooth transitions, intuitive gestures, and a clutter-free interface.
 Prioritized usability and visual clarity throughout the app.
