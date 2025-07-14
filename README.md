@@ -26,9 +26,3 @@ Prioritized usability and visual clarity throughout the app.
 | Home Screen | Scanned Document | Share Sheet |
 |:-----------:|:----------------:|:-----------:|
 | ![Home Screen](assets/app-ss1.png) | ![Scanned Document](assets/app-ss2.png) | ![Share Sheet](assets/app-ss3.png) |
-
-### Demo Video
-
-https://github.com/Mansi4481/Ease-scan/assets/app-vd1.mov
-
-
