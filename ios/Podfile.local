@@ -1,0 +1,2 @@
+# Use this file to override pod versions
+pod 'WeScan', '1.6.0'
