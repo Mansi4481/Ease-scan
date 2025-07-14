@@ -3,6 +3,8 @@ import 'package:edge_detection/edge_detection.dart';
 import 'dart:io';
 import 'package:share_plus/share_plus.dart';
 import 'package:lottie/lottie.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(const DocumentScannerApp());
@@ -33,47 +35,6 @@ class EdgeDetectionScreen extends StatefulWidget {
 
 class _EdgeDetectionScreenState extends State<EdgeDetectionScreen> {
   File? scannedImage;
-
-  Future<void> scanDocument() async {
-    try {
-      final tempDir = Directory.systemTemp;
-      final outputPath = '${tempDir.path}/scanned_document.jpg';
-      bool success = await EdgeDetection.detectEdge(outputPath);
-
-      if (success) {
-        setState(() {
-          scannedImage = File(outputPath);
-        });
-
-        // Navigate to FinalImageScreen
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => FinalImageScreen(imageFile: scannedImage!),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('Failed to start scanning. Please try again.')),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error during scanning: $e')),
-      );
-    }
-  }
-
-  Future<void> shareOrSaveDocument() async {
-    if (scannedImage != null) {
-      await Share.shareXFiles([XFile(scannedImage!.path)],
-          text: 'Scanned Document');
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('No document to share or save.')),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +76,39 @@ class _EdgeDetectionScreenState extends State<EdgeDetectionScreen> {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: scanDocument,
+                    onPressed: () async {
+                      try {
+                        final tempDir = Directory.systemTemp;
+                        final outputPath =
+                            '${tempDir.path}/scanned_document.jpg';
+                        bool success =
+                            await EdgeDetection.detectEdge(outputPath);
+
+                        if (success) {
+                          setState(() {
+                            scannedImage = File(outputPath);
+                          });
+
+                          // Navigate to FinalImageScreen
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  FinalImageScreen(imageFile: scannedImage!),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text(
+                                    'Failed to start scanning. Please try again.')),
+                          );
+                        }
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Error during scanning: $e')),
+                        );
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       foregroundColor: Colors.white,
@@ -148,13 +141,30 @@ class FinalImageScreen extends StatelessWidget {
 
   const FinalImageScreen({super.key, required this.imageFile});
 
-  Future<void> _shareImage(BuildContext context) async {
+  Future<void> _saveAndSharePdf(BuildContext context) async {
     try {
-      await Share.shareXFiles([XFile(imageFile.path)],
-          text: 'Scanned Document');
+      final pdf = pw.Document();
+      final image = pw.MemoryImage(imageFile.readAsBytesSync());
+
+      pdf.addPage(
+        pw.Page(
+          build: (pw.Context context) {
+            return pw.Center(
+              child: pw.Image(image),
+            );
+          },
+        ),
+      );
+
+      final output = await getTemporaryDirectory();
+      final filePath = '${output.path}/scanned_document.pdf';
+      final file = File(filePath);
+      await file.writeAsBytes(await pdf.save());
+
+      await Share.shareXFiles([XFile(filePath)], text: 'Scanned Document');
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to share image: $e')),
+        SnackBar(content: Text('Failed to save and share PDF: $e')),
       );
     }
   }
@@ -187,7 +197,7 @@ class FinalImageScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => _shareImage(context),
+              onPressed: () => _saveAndSharePdf(context),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
@@ -200,7 +210,7 @@ class FinalImageScreen extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                'Share',
+                'Save & Share as PDF',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
