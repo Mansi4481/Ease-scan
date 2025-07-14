@@ -23,6 +23,6 @@ Prioritized usability and visual clarity throughout the app.
 
 ## App Preview
 
-| Home Screen | Scanned Document | Share Sheet |
-|:-----------:|:----------------:|:-----------:|
-| ![Home Screen](assets/app-ss1.png) | ![Scanned Document](assets/app-ss2.png) | ![Share Sheet](assets/app-ss3.png) |
+### Home Screen
+![Home Screen](/assets/app-ss1.png)
+
