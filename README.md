@@ -30,5 +30,12 @@ Prioritized usability and visual clarity throughout the app.
 ### Share Sheet
 <img src="assets/app-ss-3.png" alt="Share Sheet" width="250"/>
 
+### App Preview
+<p align="center">
+  <img src="assets/app-ss-1.png" alt="Home Screen" width="200"/>
+  <img src="assets/app-ss-2.png" alt="Scanned Document" width="200"/>
+  <img src="assets/app-ss-3.png" alt="Share Sheet" width="200"/>
+</p>
+
 ### Demo Video
 [Download Demo Video](assets/app-vd1.mov)
