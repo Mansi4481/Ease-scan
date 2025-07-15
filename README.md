@@ -22,13 +22,13 @@ Prioritized usability and visual clarity throughout the app.
 
 
 ### Home Screen
-![Home Screen](assets/app-ss-1.png)
+<img src="assets/app-ss-1.png" alt="Home Screen" width="250"/>
 
 ### Scanned Document
-![Scanned Document](assets/app-ss-2.png)
+<img src="assets/app-ss-2.png" alt="Scanned Document" width="250"/>
 
 ### Share Sheet
-![Share Sheet](assets/app-ss-3.png)
+<img src="assets/app-ss-3.png" alt="Share Sheet" width="250"/>
 
 ### Demo Video
 [Download Demo Video](assets/app-vd1.mov)
