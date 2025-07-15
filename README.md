@@ -20,17 +20,7 @@ Focused on a minimalist, high-end design that aligns with modern iOS aesthetics.
 Ensured smooth transitions, intuitive gestures, and a clutter-free interface.
 Prioritized usability and visual clarity throughout the app.
 
-
-### Home Screen
-<img src="assets/app-ss-1.png" alt="Home Screen" width="250"/>
-
-### Scanned Document
-<img src="assets/app-ss-2.png" alt="Scanned Document" width="250"/>
-
-### Share Sheet
-<img src="assets/app-ss-3.png" alt="Share Sheet" width="250"/>
-
-### App Preview
+### App Previews
 <p align="center">
   <img src="assets/app-ss-1.png" alt="Home Screen" width="200"/>
   <img src="assets/app-ss-2.png" alt="Scanned Document" width="200"/>
